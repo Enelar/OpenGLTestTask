@@ -23,6 +23,8 @@ struct automat_column : scene_object
 
   void Draw() override;
   void Update(float t) override;
+
+  void BakeTexture();
 };
 
 class automat;

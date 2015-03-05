@@ -21,3 +21,10 @@ void automat_column::Update(float deltat)
   if (animation_offset > animation_target)
     animation_offset = animation_target;
 }
+
+void automat_column::BakeTexture()
+{
+  GLuint textureA;
+  glGenTextures(1, &textureA);
+  glBindTexture(GL_TEXTURE_2D, textureA);
+}

@@ -35,6 +35,8 @@ int main(int argc, char** argv)
   glutDisplayFunc(animate);
   glutIdleFunc(update);
 
+  glEnable(GL_TEXTURE_2D);
+
   test.Start();
   glutMainLoop();
 }
