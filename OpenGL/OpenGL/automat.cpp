@@ -27,14 +27,25 @@ void automat::Start()
 void automat::Update(float deltat)
 {
   for (auto &col : bank)
-  {
-    col.animation_offset += col.rotation_speed * deltat;
-    if (col.animation_offset > col.animation_target)
-      col.animation_offset = col.animation_target;
-  }
+    col.Update(deltat);
 }
 
 void automat::Draw()
 {
-  // TODO: Draw
+  const float scale = 2.0 / 6;
+
+  auto i = 0;
+  for (auto &col : bank)
+  {
+    glPushMatrix();
+    {
+      glTranslatef(-1, -0.5, 0);
+      glScalef(scale, scale, 0);
+      glTranslatef(i * 1.1, 0, 0);
+      col.Draw();
+    }
+
+    glPopMatrix();
+    i++;
+  }
 }

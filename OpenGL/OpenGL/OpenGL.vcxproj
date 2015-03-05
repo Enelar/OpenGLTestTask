@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="automan_column.cpp" />
     <ClCompile Include="automat.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>

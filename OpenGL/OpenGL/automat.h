@@ -1,4 +1,6 @@
 #pragma once
+#include <Windows.h>
+#include <GL\GL.h>
 
 struct automat_settings
 {
@@ -6,12 +8,21 @@ struct automat_settings
   static const int cols = 5;
 };
 
-struct automat_column
+struct scene_object
+{
+  virtual void Draw() = 0;
+  virtual void Update(float t) = 0;
+};
+
+struct automat_column : scene_object
 {
   int numbers[automat_settings::rows];
   float animation_offset = 0;
   float animation_target = 0;
   float rotation_speed = 0;
+
+  void Draw() override;
+  void Update(float t) override;
 };
 
 class automat;
@@ -34,7 +45,7 @@ struct virtual_row_container
   virtual_row_iterator end();
 };
 
-class automat
+class automat : scene_object
 {
   automat_column bank[automat_settings::cols];
 public:
@@ -42,6 +53,6 @@ public:
 
   void Start();
   void SelectLines();
-  void Update(float delta_t);
-  void Draw();
+  void Draw() override;
+  void Update(float t) override;
 };
